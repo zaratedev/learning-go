@@ -2,39 +2,24 @@ package main
 
 import "fmt"
 
+const (
+	Domingo int = iota
+	Lunes
+	Martes
+	Miercoles
+	Jueves
+	Viernes
+	Sabado
+)
+
 func main() {
-	// Operadores relacionales
+	// Secuencia de valores
 
-	/*
-		>
-		<
-		>=
-		<=
-		==
-		!=
-	*/
-
-	edad := 30
-
-	fmt.Println(edad)
-	fmt.Println(edad > 5)
-	fmt.Println(edad < 5)
-	fmt.Println(edad >= 5)
-	fmt.Println(edad <= 5)
-	fmt.Println(edad == 30)
-	fmt.Println(edad != 40)
-
-	// Operadores logicos
-
-	fmt.Println("Operadores Logicos")
-
-	// && || !
-
-	operacion := 20 == 20 && 30 == 30
-
-	fmt.Println("Operacion con &&", operacion)
-
-	operacion = 10 > 40 || 50 < 50
-
-	fmt.Println("Operacion con ||", operacion)
+	fmt.Println(Domingo)
+	fmt.Println(Lunes)
+	fmt.Println(Martes)
+	fmt.Println(Miercoles)
+	fmt.Println(Jueves)
+	fmt.Println(Viernes)
+	fmt.Println(Sabado)
 }
