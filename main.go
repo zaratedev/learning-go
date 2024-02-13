@@ -3,16 +3,20 @@ package main
 import "fmt"
 
 func main() {
-	// Trabajando con strings
+	// Lectura de valores
 
-	curso := "Curso profesional de go"
+	var name string
+	var city string
+	var height float32
 
-	longitud := len(curso)
+	fmt.Print("Ingresa tu nombre: ")
+	fmt.Scanf("%s", &name)
 
-	fmt.Println(curso, longitud)
+	fmt.Print("Ingresa tu ciudad: ")
+	fmt.Scanf("%s", &city)
 
-	caracter := curso[0]
+	fmt.Print("Ingresa tu altura: ")
+	fmt.Scanf("%f", &height)
 
-	fmt.Println(caracter)
-	fmt.Printf("%c", caracter)
+	fmt.Printf("Hola %s tu ciudad es %s y tu altura %.2f\n", name, city, height)
 }
