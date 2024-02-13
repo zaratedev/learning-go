@@ -2,24 +2,17 @@ package main
 
 import "fmt"
 
-const (
-	Domingo int = iota
-	Lunes
-	Martes
-	Miercoles
-	Jueves
-	Viernes
-	Sabado
-)
-
 func main() {
-	// Secuencia de valores
+	// Trabajando con strings
 
-	fmt.Println(Domingo)
-	fmt.Println(Lunes)
-	fmt.Println(Martes)
-	fmt.Println(Miercoles)
-	fmt.Println(Jueves)
-	fmt.Println(Viernes)
-	fmt.Println(Sabado)
+	curso := "Curso profesional de go"
+
+	longitud := len(curso)
+
+	fmt.Println(curso, longitud)
+
+	caracter := curso[0]
+
+	fmt.Println(caracter)
+	fmt.Printf("%c", caracter)
 }
