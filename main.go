@@ -3,35 +3,41 @@ package main
 import "fmt"
 
 func main() {
-	// Arreglos
+	// Slices
+	numbers := []int{1, 2, 3, 4} // Referencia a un arreglo base
 
-	var numeros [5]int
+	numbers = append(numbers, 5)
+	numbers = append(numbers, 6)
+	numbers = append(numbers, 7)
+	numbers = append(numbers, 8)
+	numbers = append(numbers, 9)
+	numbers = append(numbers, 10)
 
-	numeros[0] = 10
-	numeros[1] = 20
-	numeros[2] = 30
-	numeros[3] = 40
-	numeros[4] = 50
+	extract := numbers[0:5] // un nuevo slice a partir de uno
 
-	fmt.Println(numeros)
+	numbers[0] = 100 // Aqui se modifica la posicion 0
 
-	// Otra forma de declarar arreglos
+	fmt.Println(numbers)
+	fmt.Println(extract)
 
-	products := [5]string{"sofa", "cama", "silla", "lampara", "mesa"}
+	// Parte dos
 
-	fmt.Println(products)
+	months := []string{"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"}
 
-	// Otra forma sin usar la cantidad
+	// Puntero
+	// Longitud
+	// Capacidad
 
-	prices := [...]int{200, 300, 400, 500}
+	longitud := len(months)
+	capacidad := cap(months)
 
-	fmt.Println(prices)
+	fmt.Printf("Longitud %v y capacidad %v %p\n", longitud, capacidad, months)
 
-	currency := [...]string{1: "MXN", 0: "USD", 2: "EUR"}
+	// Agregamos un nuevo mes
+	months = append(months, "Julio")
 
-	fmt.Println(currency)
+	longitud = len(months)
+	capacidad = cap(months)
 
-	sub_currency := currency[0:2] // Esto ya es un slice
-
-	fmt.Println(sub_currency)
+	fmt.Printf("Longitud %v y capacidad %v %p\n", longitud, capacidad, months)
 }
