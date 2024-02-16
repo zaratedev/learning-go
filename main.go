@@ -5,53 +5,49 @@ import (
 )
 
 func main() {
-	// Funcion Make
+	// Condicionales
+	var edad int
+	// fmt.Print("Ingresa tu edad: ")
+	// fmt.Scanf("%d", &edad)
 
-	slice := make([]int, 3, 3)
+	edad = 18
 
-	slice[0] = 100
-	slice[1] = 200
-	slice[2] = 300
+	if edad >= 18 {
+		fmt.Println("Usuario mayor de edad")
+	} else {
+		fmt.Println("Usuario menor de edad")
+	}
 
-	slice = append(slice, 400)
+	// Multiples condiciones
 
-	fmt.Println(slice)
-	fmt.Println(len(slice))
-	fmt.Println(cap(slice))
+	var calificacion int
 
-	// Mapas
+	fmt.Print("Ingresa una calificacion: ")
+	fmt.Scanf("%d", &calificacion)
 
-	days := make(map[int]string)
+	if calificacion == 10 {
+		fmt.Println("Felicidades aprobaste la materia")
+	} else if calificacion == 8 || calificacion == 9 {
+		fmt.Println("Aprobaste la materia.")
+	} else if calificacion == 6 || calificacion == 7 {
+		fmt.Println("Aprobaste la materia. Pero necesitas estudiar mas")
+	} else if calificacion >= 0 && calificacion <= 5 {
+		fmt.Println("Reprobsate la materia")
+	} else {
+		fmt.Println("Calificación no valida")
+	}
 
-	days[0] = "Domingo"
-	days[1] = "Lunes"
-	days[2] = "Martes"
-	days[3] = "Miercoles"
-	days[4] = "Jueves"
-	days[5] = "Viernes"
-	days[6] = "Sabado"
-
-	// Eliminar un elemento del mapa
-	delete(days, 4)
-
-	fmt.Println(days)
-
-	// Otro ejemplo
-	students := make(map[string][]int)
-
-	students["Jonathan"] = []int{100, 70, 90, 80, 50}
-
-	fmt.Println(students)
-
-	// Iterar un mapa
-
-	users := map[int]string{} // Sin make
-	users[1] = "Jonathan"
-	users[2] = "Cynthia"
-	users[3] = "Erick"
-	users[4] = "Jorge"
-
-	for id, name := range users {
-		fmt.Println(id, name)
+	// Usando switch
+	switch calificacion {
+	case 10:
+		fmt.Println("Felicidades aprobaste la materia")
+	case 8, 9:
+		fmt.Println("Aprobaste la materia.")
+	case 7, 6:
+		fmt.Println("Aprobaste la materia. Pero necesitas estudiar mas")
+	case 1, 2, 3, 4, 5:
+		fmt.Println("Reprobsate la materia")
+	default:
+		fmt.Println("Calificación no valida")
 	}
 }
