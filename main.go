@@ -1,43 +1,57 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	// Slices
-	numbers := []int{1, 2, 3, 4} // Referencia a un arreglo base
+	// Funcion Make
 
-	numbers = append(numbers, 5)
-	numbers = append(numbers, 6)
-	numbers = append(numbers, 7)
-	numbers = append(numbers, 8)
-	numbers = append(numbers, 9)
-	numbers = append(numbers, 10)
+	slice := make([]int, 3, 3)
 
-	extract := numbers[0:5] // un nuevo slice a partir de uno
+	slice[0] = 100
+	slice[1] = 200
+	slice[2] = 300
 
-	numbers[0] = 100 // Aqui se modifica la posicion 0
+	slice = append(slice, 400)
 
-	fmt.Println(numbers)
-	fmt.Println(extract)
+	fmt.Println(slice)
+	fmt.Println(len(slice))
+	fmt.Println(cap(slice))
 
-	// Parte dos
+	// Mapas
 
-	months := []string{"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"}
+	days := make(map[int]string)
 
-	// Puntero
-	// Longitud
-	// Capacidad
+	days[0] = "Domingo"
+	days[1] = "Lunes"
+	days[2] = "Martes"
+	days[3] = "Miercoles"
+	days[4] = "Jueves"
+	days[5] = "Viernes"
+	days[6] = "Sabado"
 
-	longitud := len(months)
-	capacidad := cap(months)
+	// Eliminar un elemento del mapa
+	delete(days, 4)
 
-	fmt.Printf("Longitud %v y capacidad %v %p\n", longitud, capacidad, months)
+	fmt.Println(days)
 
-	// Agregamos un nuevo mes
-	months = append(months, "Julio")
+	// Otro ejemplo
+	students := make(map[string][]int)
 
-	longitud = len(months)
-	capacidad = cap(months)
+	students["Jonathan"] = []int{100, 70, 90, 80, 50}
 
-	fmt.Printf("Longitud %v y capacidad %v %p\n", longitud, capacidad, months)
+	fmt.Println(students)
+
+	// Iterar un mapa
+
+	users := map[int]string{} // Sin make
+	users[1] = "Jonathan"
+	users[2] = "Cynthia"
+	users[3] = "Erick"
+	users[4] = "Jorge"
+
+	for id, name := range users {
+		fmt.Println(id, name)
+	}
 }
