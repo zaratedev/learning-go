@@ -4,23 +4,18 @@ import (
 	"fmt"
 )
 
+func sum(a, b int) (int, string) {
+	return a + b, "Sum sucess"
+}
+
 func main() {
-	// Ciclo for
+	// Funciones
 
-	for i := 1; i <= 100; i++ {
-		if i%2 == 0 {
-			fmt.Println(i)
-		}
-	}
+	operation, message := sum(50, 30)
 
-	// For como while
-	number := 12345
-	count := 0
+	fmt.Println(operation, message)
 
-	for number > 0 {
-		number = number / 10
-		count++
-	}
+	result, _ := sum(39, 49)
 
-	fmt.Println("Cantidad de digitos", count)
+	fmt.Println(result)
 }
