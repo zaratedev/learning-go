@@ -2,25 +2,22 @@ package main
 
 import "fmt"
 
-type Operacion func(balance, cantidad int) int
+type Operation func(a, b int) int
 
-func sum(a, b int) int { // Funcion de tipo operacion
-	return a + b
-}
+func createOperation(operation string) Operation {
+	if operation == "sum" {
+		return func(a, b int) int { return a + b }
+	}
 
-func minus(a, b int) int { // Funcion de tipo operacion
-	return a - b
-}
-
-func executeOperation(function Operacion) {
-	result := function(10, 10)
-
-	fmt.Println("Resultado:", result)
+	return func(a, b int) int { return a * b }
 }
 
 func main() {
-	// Funciones como argumentos
+	// Retornar funciones
 
-	executeOperation(sum)
-	executeOperation(minus)
+	sum := createOperation("sum")
+
+	result := sum(10, 20)
+
+	fmt.Println(result)
 }
