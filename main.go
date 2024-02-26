@@ -18,4 +18,20 @@ func main() {
 	result, _ := sum(39, 49)
 
 	fmt.Println(result)
+
+	// Funciones anonimas
+
+	func() {
+		fmt.Println("Fucntion anonymous")
+	}()
+
+	myFunction := func(name string) string {
+		message := fmt.Sprintf("Hola, %s", name)
+
+		return message
+	}
+
+	message = myFunction("Jonathan")
+
+	fmt.Println(message)
 }
