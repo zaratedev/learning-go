@@ -1,37 +1,26 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-func sum(a, b int) (int, string) {
-	return a + b, "Sum sucess"
+type Operacion func(balance, cantidad int) int
+
+func sum(a, b int) int { // Funcion de tipo operacion
+	return a + b
+}
+
+func minus(a, b int) int { // Funcion de tipo operacion
+	return a - b
+}
+
+func executeOperation(function Operacion) {
+	result := function(10, 10)
+
+	fmt.Println("Resultado:", result)
 }
 
 func main() {
-	// Funciones
+	// Funciones como argumentos
 
-	operation, message := sum(50, 30)
-
-	fmt.Println(operation, message)
-
-	result, _ := sum(39, 49)
-
-	fmt.Println(result)
-
-	// Funciones anonimas
-
-	func() {
-		fmt.Println("Fucntion anonymous")
-	}()
-
-	myFunction := func(name string) string {
-		message := fmt.Sprintf("Hola, %s", name)
-
-		return message
-	}
-
-	message = myFunction("Jonathan")
-
-	fmt.Println(message)
+	executeOperation(sum)
+	executeOperation(minus)
 }
