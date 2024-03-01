@@ -2,22 +2,19 @@ package main
 
 import "fmt"
 
-type Operation func(a, b int) int
-
-func createOperation(operation string) Operation {
-	if operation == "sum" {
-		return func(a, b int) int { return a + b }
+func avg(results ...int) int {
+	var sum int
+	for _, result := range results {
+		sum = sum + result
 	}
 
-	return func(a, b int) int { return a * b }
+	return sum / len(results)
 }
 
 func main() {
-	// Retornar funciones
+	// Varidic function
 
-	sum := createOperation("sum")
-
-	result := sum(10, 20)
+	result := avg(7, 8, 9, 10, 10, 9)
 
 	fmt.Println(result)
 }
