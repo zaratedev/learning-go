@@ -2,19 +2,18 @@ package main
 
 import "fmt"
 
-func avg(results ...int) int {
-	var sum int
-	for _, result := range results {
-		sum = sum + result
+func factorial(number int) int {
+	if number == 1 {
+		return 1
 	}
 
-	return sum / len(results)
+	return factorial(number-1) * number
 }
 
 func main() {
-	// Varidic function
+	// Funciones recursiva
 
-	result := avg(7, 8, 9, 10, 10, 9)
+	result := factorial(6)
 
-	fmt.Println(result)
+	fmt.Println("Factorial es", result)
 }
