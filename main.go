@@ -1,26 +1,36 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"os"
 )
 
-func div(a, b int) (int, error) {
-	if b == 0 {
-		return 0, errors.New("No se puede dividir por 0")
-	}
+func function1() {
+	fmt.Println("Function 1")
+}
 
-	return a / b, nil
+func function2() {
+	fmt.Println("Function 2")
 }
 
 func main() {
-	// Excepciones
+	// Progrmar funciones
 
-	result, err := div(100, 10)
+	file, err := os.Open("example.txt")
 
 	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("Resultado de la division", result)
+		panic("No es posible obtener el archivo")
 	}
+
+	defer func() {
+		fmt.Println("close file")
+		file.Close()
+	}()
+
+	content := make([]byte, 254)
+	length, _ := file.Read(content)
+
+	body := string(content[0:length])
+
+	fmt.Println(body)
 }
