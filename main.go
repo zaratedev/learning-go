@@ -16,21 +16,25 @@ func function2() {
 func main() {
 	// Progrmar funciones
 
-	file, err := os.Open("example.txt")
-
-	if err != nil {
-		panic("No es posible obtener el archivo")
-	}
-
 	defer func() {
-		fmt.Println("close file")
-		file.Close()
+		if err := recover(); err != nil {
+			fmt.Println("Ha ocurrido un error")
+		}
 	}()
 
-	content := make([]byte, 254)
-	length, _ := file.Read(content)
+	if file, err := os.Open("samples.txt"); err != nil {
+		panic("No es posible obtener el archivo")
+	} else {
+		defer func() {
+			fmt.Println("close file")
+			file.Close()
+		}()
 
-	body := string(content[0:length])
+		content := make([]byte, 254)
+		length, _ := file.Read(content)
 
-	fmt.Println(body)
+		body := string(content[0:length])
+
+		fmt.Println(body)
+	}
 }
