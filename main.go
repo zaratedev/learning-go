@@ -1,19 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
-func factorial(number int) int {
-	if number == 1 {
-		return 1
+func div(a, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("No se puede dividir por 0")
 	}
 
-	return factorial(number-1) * number
+	return a / b, nil
 }
 
 func main() {
-	// Funciones recursiva
+	// Excepciones
 
-	result := factorial(6)
+	result, err := div(100, 10)
 
-	fmt.Println("Factorial es", result)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Resultado de la division", result)
+	}
 }
