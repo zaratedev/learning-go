@@ -2,39 +2,41 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
-func function1() {
-	fmt.Println("Function 1")
+type User struct {
+	name  string
+	email string
 }
 
-func function2() {
-	fmt.Println("Function 2")
+// Metodo
+
+func (user *User) setName(name string) {
+	user.name = name
+}
+
+func (user *User) getName() string {
+	return user.name
 }
 
 func main() {
-	// Progrmar funciones
+	// Estructuras
 
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("Ha ocurrido un error")
-		}
-	}()
+	var user User // Objeto
 
-	if file, err := os.Open("samples.txt"); err != nil {
-		panic("No es posible obtener el archivo")
-	} else {
-		defer func() {
-			fmt.Println("close file")
-			file.Close()
-		}()
+	user.name = "Jonathan Zarate"
+	user.email = "zaratedev@gmail.com"
 
-		content := make([]byte, 254)
-		length, _ := file.Read(content)
+	fmt.Println(user.name)
+	fmt.Println(user.email)
 
-		body := string(content[0:length])
+	person := User{name: "Cynthia", email: "cynthia@test.com"}
 
-		fmt.Println(body)
-	}
+	fmt.Println(person)
+
+	me := User{name: "Joe", email: "joe@gmail.com"}
+
+	me.setName("Joe Doe")
+
+	fmt.Println(me.getName())
 }
