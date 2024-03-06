@@ -10,6 +10,10 @@ type Animal interface {
 	sleep()
 }
 
+type Mascota interface {
+	rascar()
+}
+
 type Dog struct {
 	Name string
 }
@@ -20,6 +24,10 @@ func (dog Dog) eat() {
 
 func (dog Dog) sleep() {
 	fmt.Println(dog.Name, "Esta durmiendo")
+}
+
+func (dog Dog) rascar() {
+	fmt.Println(dog.Name, "Se rasca")
 }
 
 func executeActions(animal Animal) {
@@ -33,5 +41,5 @@ func main() {
 
 	fmt.Println(dog.Name)
 
-	executeActions(dog)
+	dog.rascar()
 }
