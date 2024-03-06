@@ -5,38 +5,57 @@ import (
 )
 
 type User struct {
-	name  string
-	email string
+	Name   string
+	Email  string
+	Active bool
 }
 
-// Metodo
-
-func (user *User) setName(name string) {
-	user.name = name
+type Student struct {
+	User User
+	Id   string
 }
 
-func (user *User) getName() string {
-	return user.name
+type Course struct {
+	Title  string
+	Videos []Video
+}
+
+type Video struct {
+	Title  string
+	Course Course
 }
 
 func main() {
-	// Estructuras
+	// Relacion uno a uno
+	user1 := User{Name: "Jonathan", Email: "zaratedev@gmail.com", Active: true}
+	user2 := User{Name: "Cynthia", Email: "cynthia@gmail.com", Active: false}
 
-	var user User // Objeto
+	student1 := Student{User: user1, Id: "1f1"}
 
-	user.name = "Jonathan Zarate"
-	user.email = "zaratedev@gmail.com"
+	fmt.Println(user1)
+	fmt.Println(user2)
+	fmt.Println(student1)
 
-	fmt.Println(user.name)
-	fmt.Println(user.email)
+	// Acceder a datos del usuario desde student
 
-	person := User{name: "Cynthia", email: "cynthia@test.com"}
+	fmt.Println(student1.User.Email)
 
-	fmt.Println(person)
+	// Relacion uno a muchos
 
-	me := User{name: "Joe", email: "joe@gmail.com"}
+	video1 := Video{Title: "Instalacion de Go"}
+	video2 := Video{Title: "Introduccion a Go"}
 
-	me.setName("Joe Doe")
+	videos := []Video{video1, video2}
 
-	fmt.Println(me.getName())
+	curse1 := Course{Title: "Curso de Go", Videos: videos}
+
+	video1.Course = curse1
+	video2.Course = curse1
+
+	fmt.Println(video1.Course.Title)
+	fmt.Println(video2.Course.Title)
+	fmt.Println("Lista de videos")
+	for _, video := range curse1.Videos {
+		fmt.Println(video.Title)
+	}
 }
